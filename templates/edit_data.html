@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Modifier donnée</h2>
+
+<form method="POST">
+
+    <input type="text" name="title" value="{{ data.title }}" required><br>
+
+    <textarea name="content">{{ data.content }}</textarea><br>
+
+    <button type="submit">Modifier</button>
+
+</form>
+
+{% endblock %}

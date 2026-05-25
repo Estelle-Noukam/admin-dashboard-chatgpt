@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<nav>
+
+    <a href="/">Accueil</a>
+
+    {% if user %}
+
+        <a href="/dashboard">Dashboard</a>
+        <a href="/reports">Rapports</a>
+        <a href="/profile">Profil</a>
+        <a href="/logout">Déconnexion</a>
+
+        {% if user.role == 'admin' %}
+            <a href="/admin/users">Admin Utilisateurs</a>
+            <a href="/admin/data">Admin Données</a>
+        {% endif %}
+
+    {% else %}
+
+        <a href="/login">Connexion</a>
+        <a href="/register">Inscription</a>
+
+    {% endif %}
+
+</nav>
+
+<hr>
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+{% block content %}{% endblock %}
+
+</body>
+</html>

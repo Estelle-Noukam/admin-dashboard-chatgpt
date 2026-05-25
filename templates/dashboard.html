@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Dashboard</h2>
+
+<h3>Statistiques</h3>
+
+<ul>
+    <li>Total utilisateurs : {{ total_users }}</li>
+    <li>Total données : {{ total_data }}</li>
+    <li>Admins : {{ admin_users }}</li>
+    <li>Utilisateurs : {{ normal_users }}</li>
+</ul>
+
+<h3>Dernières données</h3>
+
+<table>
+
+<tr>
+    <th>ID</th>
+    <th>Titre</th>
+    <th>Date</th>
+</tr>
+
+{% for data in latest_data %}
+
+<tr>
+
+    <td>{{ data.id }}</td>
+    <td>{{ data.title }}</td>
+    <td>{{ data.created_at }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Gestion données</h2>
+
+<a href="/admin/data/create">Ajouter donnée</a>
+
+<table>
+
+<tr>
+    <th>ID</th>
+    <th>Titre</th>
+    <th>Contenu</th>
+    <th>Date</th>
+    <th>Actions</th>
+</tr>
+
+{% for data in data_list %}
+
+<tr>
+
+    <td>{{ data.id }}</td>
+    <td>{{ data.title }}</td>
+    <td>{{ data.content }}</td>
+    <td>{{ data.created_at }}</td>
+
+    <td>
+        <a href="/admin/data/edit/{{ data.id }}">Modifier</a>
+        <a href="/admin/data/delete/{{ data.id }}">Supprimer</a>
+    </td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endblock %}
